@@ -1,8 +1,8 @@
 from fastapi import APIRouter
-from Schemas.chat import ChatRequest, ChatResponse
+from backend.schemas.chat import ChatRequest, ChatResponse
 from fastapi.responses import JSONResponse
 
-from services.llm_service import generate_response
+from backend.services.llm_service import generate_response
 
 router = APIRouter()
 

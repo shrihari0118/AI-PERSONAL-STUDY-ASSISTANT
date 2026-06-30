@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from routes.chat_route import router as chat_router
-from routes.documents import router as document_router
+from backend.routes.chat_route import router as chat_router
+from backend.routes.documents import router as document_router
 
 app = FastAPI()
 

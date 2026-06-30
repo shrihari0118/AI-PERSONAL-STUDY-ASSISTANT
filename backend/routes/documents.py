@@ -2,8 +2,9 @@ from fastapi import APIRouter, UploadFile, File
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from pathlib import Path
-from services.file_service import save_uploaded_file
-from Schemas.file import DocumentUploadResponse
+from backend.services.file_service import save_uploaded_file
+from backend.schemas.file import DocumentUploadResponse
+from backend.services.processors.document_processor import process_document
 
 router = APIRouter()
 
@@ -47,6 +48,7 @@ async def upload_document(file : UploadFile = File(...)):
         )
     
     saved_file = await save_uploaded_file(file)
+    extracted_document = process_document(saved_file)
 
     return DocumentUploadResponse(
         success=True,
