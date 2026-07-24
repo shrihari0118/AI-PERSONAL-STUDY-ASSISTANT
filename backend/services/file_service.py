@@ -2,9 +2,8 @@ from pathlib import Path
 from uuid import uuid4
 from fastapi import UploadFile
 from backend.schemas.file import UploadedFileMetaData
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-UPLOADS_DIR = BASE_DIR/"uploads"
+from backend.config import BASE_DIR
+from backend.config import UPLOADS_DIR
 
 async def save_uploaded_file(file:UploadFile) -> UploadedFileMetaData:
 
