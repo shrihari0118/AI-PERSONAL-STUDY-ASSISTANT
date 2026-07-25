@@ -1,6 +1,6 @@
 from backend.schemas.chunk import Chunk
 
-def create_chunks(text : str, chunk_size : int = 500, overlap : int = 100) ->list[Chunk]:
+def create_chunks(text : str, document_id = str, chunk_size : int = 500, overlap : int = 100) ->list[Chunk]:
     if chunk_size <= 0:
         raise ValueError("Chunk size must be greater than zero")
     if overlap < 0 or overlap >= chunk_size:
@@ -17,7 +17,7 @@ def create_chunks(text : str, chunk_size : int = 500, overlap : int = 100) ->lis
 
     while start < len(text):
         current_chunk = Chunk(
-            chunk_id = f"chunk_{len(chunks)}",
+            chunk_id = f"{document_id.stored_filename}_chunk_{len(chunks)}",
             text = text[start:start+chunk_size]
         )
         chunks.append(current_chunk)
