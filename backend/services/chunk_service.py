@@ -17,7 +17,7 @@ def create_chunks(text : str, chunk_size : int = 500, overlap : int = 100) ->lis
 
     while start < len(text):
         current_chunk = Chunk(
-            chunk_id = len(chunks),
+            chunk_id = f"chunk_{len(chunks)}",
             text = text[start:start+chunk_size]
         )
         chunks.append(current_chunk)

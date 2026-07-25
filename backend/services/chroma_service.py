@@ -25,11 +25,11 @@ def store_embeddings(embedded_chunk : list[EmbeddedChunk]):
     ]
 
     embeddings = [
-        chunk.embeddings
+        chunk.embedding
         for chunk in embedded_chunk
     ]
 
-    COLLECTION.ADD(
+    COLLECTION.add(
         ids = ids,
         documents = documents,
         embeddings = embeddings

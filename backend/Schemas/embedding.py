@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
 class EmbeddedChunk(BaseModel):
-    chunk_id: int
+    chunk_id: str
     text: str
     embedding: list[float]

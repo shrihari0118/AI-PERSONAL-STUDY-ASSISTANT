@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 class Chunk(BaseModel):
-    chunk_id : int
+    chunk_id : str
     text : str
