@@ -6,11 +6,14 @@ from backend.services.embedding_service import generate_embeddings
 from backend.services.chroma_service import store_embeddings
 
 def index_document(uploaded_file : UploadedFileMetaData) -> IndexingResult:
-    document = process_document(uploaded_file.file_path)
+    document = process_document(uploaded_file)
+    chunks = create_chunks(document.extracted_text)
+    embedded_chunks = generate_embeddings(chunks)
+    store_embeddings(embedded_chunks)
 
     return IndexingResult(
         success = True,
-        message = "Document extracted successfully",
-        chunks_created = 0,
-        embeddings_stored = 0
+        message = "Document indexed successfully",
+        chunks_created = len(chunks),
+        embeddings_stored = len(embedded_chunks)
     )
