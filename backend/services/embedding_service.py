@@ -30,3 +30,11 @@ def generate_embeddings(chunks : list[Chunk]) -> list[EmbeddedChunk]:
         embedded_chunks.append(embedded_chunk)
 
     return embedded_chunks
+
+def generate_query_embeddings(question : str) -> list[float]:
+    if not question.strip():
+        raise ValueError("Question cannot be empty")
+
+    embedding = MODEL.encode(question, convert_to_numpy = True)
+    return embedding.tolist()
+
